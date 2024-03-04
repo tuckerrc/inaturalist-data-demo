@@ -1,6 +1,6 @@
 with
-    photos as (select * from fct_photos),
-    observations as (select * from fct_observations),
+    photos as (select * from {{ ref("fct_photos") }}),
+    observations as (select * from {{ ref("fct_observations") }}),
     final as (
         select observations.common_name, count(photos.observation_id) as photo_count
         from observations
