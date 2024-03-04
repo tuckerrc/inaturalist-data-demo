@@ -12,9 +12,9 @@ Diagram of the proposed workflow.
 
 Screenshot of the dbt DAG
 
-<img alt="dbt DAG" width=50% src="https://github.com/tuckerrc/inaturalist-data-demo/raw/main/imgs/dbt-dag.png" />
+<img alt="dbt DAG" width=75% src="https://github.com/tuckerrc/inaturalist-data-demo/raw/main/imgs/dbt-dag.png" />
 
 ## Notes on setup
 
-See the SETUP.md file for things to get a system running locally (not a
+See the [SETUP.md](SETUP.md) file for things to get a system running locally (not a
 production workflow by any stretch of the imagination).
