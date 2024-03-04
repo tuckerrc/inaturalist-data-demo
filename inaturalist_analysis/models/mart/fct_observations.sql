@@ -13,7 +13,8 @@ with
             taxon.name as scientific_name,
             taxon.preferred_common_name as common_name,
             taxon.complete_rank,
-            taxon.wikipedia_url
+            taxon.wikipedia_url,
+            taxon.ancestry
         from source
         left join taxon on source.taxon_id = taxon.taxon_id
     )
