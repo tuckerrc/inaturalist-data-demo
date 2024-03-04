@@ -21,6 +21,7 @@ from textwrap import dedent
 from airflow import DAG
 
 from airflow.operators.bash import BashOperator
+from airflow.models import Variable
 from airflow.providers.docker.operators.docker import DockerOperator
 from airflow.utils.dates import days_ago
 
@@ -43,11 +44,11 @@ with DAG(
     tags=['inaturalist', 'dbt', 'cloudquery'],
 ) as dag:
 
-    cloudquery_project_path = "/home/tuckerc/Code/cloudquery-inaturalist-sourcer"
-    cloudquery_config_filename = "TestConfig.yaml"
-    dbt_project_path = "/home/tuckerc/Code/inaturalist_analysis"
-    dbt_profiles_dir = "/home/tuckerc/.dbt"
-    dbt_virtualenv_path = "/home/tuckerc/.virtualenvs/airflow-testing/bin/activate"
+    cloudquery_project_path = Variable.get("cloudquery_project_path")
+    cloudquery_config_filename = Variable.get("cloudquery_config_filename")
+    dbt_project_path = Variable.get("dbt_project_path")
+    dbt_profiles_dir = Variable.get('dbt_profiles_dir')
+    dbt_virtualenv_path = Variable.get("dbt_virtualenv_path")
     dbt_env = {
             "DBT_PROJECT_PATH": dbt_project_path,
             "DBT_PROFILES_DIR": dbt_profiles_dir,
@@ -88,9 +89,4 @@ with DAG(
         env=dbt_env
     )
 
-    t6 = BashOperator(
-        task_id='postgres_export',
-        bash_command='echo "SELECT json_agg(t) FROM (SELECT * FROM airflow.dev.fct_observations) t;"',
-    )
-
-    t1 >> t2 >> t3 >> t4 >> [t5, t6]
+    t1 >> t2 >> t3 >> t4 >> t5
