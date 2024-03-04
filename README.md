@@ -8,7 +8,7 @@ Diagram of the proposed workflow.
 
 <img alt="workflow diagram" width=50% src="https://github.com/tuckerrc/inaturalist-data-demo/raw/main/imgs/workflow-diagram.png" />
 
-## dbt Dag
+## dbt DAG
 
 Screenshot of the dbt DAG
 
