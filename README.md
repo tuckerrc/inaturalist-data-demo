@@ -1,6 +1,6 @@
 # iNaturalist Observations Data
 
-Workflow to download a bound box of iNaturalist observations
+Workflow to download a bounded box of iNaturalist observations
 
 ## Diagram
 
