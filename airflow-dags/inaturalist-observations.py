@@ -57,7 +57,7 @@ with DAG(
             "DBT_VIRTUALENV_ACTIVATE_PATH": dbt_virtualenv_path,
     }
 
-    t1 = BashOperator(
+    cq_sync = BashOperator(
         task_id='cloudquery_sync',
         bash_command='scripts/cloudquery_sync.sh',
         env={
@@ -66,28 +66,34 @@ with DAG(
         }
     )
 
-    t2 = BashOperator(
+    dbt_deps = BashOperator(
         task_id='dbt_deps',
         bash_command='scripts/dbt_deps.sh',
         env=dbt_env
     )
 
-    t3 = BashOperator(
+    dbt_seed = BashOperator(
+        task_id='dbt_seed',
+        bash_command='scripts/dbt_seed.sh',
+        env=dbt_env
+    )
+
+    dbt_run = BashOperator(
         task_id='dbt_run',
         bash_command='scripts/dbt_run.sh',
         env=dbt_env
     )
 
-    t4 = BashOperator(
+    dbt_test = BashOperator(
         task_id='dbt_test',
         bash_command='scripts/dbt_test.sh',
         env=dbt_env
     )
 
-    t5 = BashOperator(
+    dbt_docs = BashOperator(
         task_id='dbt_docs',
         bash_command='scripts/dbt_docs.sh',
         env=dbt_env
     )
 
-    t1 >> t2 >> t3 >> t4 >> t5
+    cq_sync >> dbt_deps >> dbt_seed >> dbt_run >> dbt_test >> dbt_docs 
