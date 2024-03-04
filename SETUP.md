@@ -20,7 +20,7 @@ pip install apache-airflow
 Make sure to export the AIRFLOW_HOME env
 
 ```bash
-export APACHE_HOME=$HOME/tuckerc/Code/airflow-testing/airflow
+export APACHE_HOME=$HOME/Code/airflow-testing/airflow
 ```
 
 Copy or symlink dags to the `$APACHE_HOME` directory
