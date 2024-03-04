@@ -1,7 +1,7 @@
 # Python iNaturalist Sourcer
 
-Simple sourcer for iNaturalist Observations inside a bounding box from the
-iNaturalist API ([api.inaturalist.org](https://api.inaturalist.org/v1/docs/)).
+Simple sourcer for [iNaturalist](https://www.inaturalist.org/) observations
+inside a bounding box from the iNaturalist API ([api.inaturalist.org](https://api.inaturalist.org/v1/docs/)).
 
 Created from the clouquery [python-plugin-template](https://github.com/cloudquery/python-plugin-template) repo 
 
