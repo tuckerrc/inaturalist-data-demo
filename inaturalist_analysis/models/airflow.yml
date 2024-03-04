@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: airflow
+    schema: public
+    database: airflow
+    tables:
+      - name: cq_inaturalist_observations

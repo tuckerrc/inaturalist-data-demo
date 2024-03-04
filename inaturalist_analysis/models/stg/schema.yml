@@ -1,0 +1,9 @@
+version: 2
+
+models:
+  - name: stg_observations
+    columns:
+      - name: observation_id
+        tests:
+          - unique
+          - not_null

@@ -1,0 +1,32 @@
+kind: source
+spec:
+  name: "observations"
+  registry: "grpc"
+  path: "localhost:7777"
+  tables: ['*']
+  destinations: ["postgresql"]
+  spec:
+    base_url: https://api.inaturalist.org
+    family_id: 7823 # Crows, Jays, and Magpies
+    # family_id: 45933 # Squirrels
+    bbox: # North Carolina
+      swlat: 35.530836
+      swlng: -79.071087
+      nelat: 36.117908
+      nelng: -78.247617
+    # bbox: # Central Park
+    #   swlat: 40.765518
+    #   swlng: -73.982994
+    #   nelat: 40.800003
+    #   nelng: -73.947213
+---
+kind: destination
+spec:
+  name: "postgresql"
+  path: "cloudquery/postgresql"
+  registry: "cloudquery"
+  version: "v7.3.6"
+
+  spec:
+    connection_string: "${POSTGRESQL_CONNECTION_STRING}" # set the environment variable in a format like postgresql://postgres:pass@localhost:5432/postgres?sslmode=disable
+
