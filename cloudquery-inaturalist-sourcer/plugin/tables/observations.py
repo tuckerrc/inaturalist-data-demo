@@ -1972,7 +1972,7 @@ class Observations(Table):
             name="cq_inaturalist_observations",
             title="iNaturalist Observations",
             columns=[
-                Column("id", pa.uint64(), primary_key=True),
+                Column("id", pa.uint64()),
                 Column("quality_grade", pa.string()),
                 Column("uuid", pa.string()),
                 Column("time_observed_at", pa.string()),

@@ -2,8 +2,25 @@ version: 2
 
 models:
   - name: stg_observations
+    config:
+      tags:
+        - "stage"
+        - "observations"
+        - "inaturalist"
     columns:
       - name: observation_id
         tests:
           - unique
           - not_null
+  - name: stg_taxon
+    config:
+      tags:
+        - "stage"
+        - "taxon"
+        - "inaturalist"
+  - name: stg_photos
+    config:
+      tags:
+        - "stage"
+        - "taxon"
+        - "inaturalist"

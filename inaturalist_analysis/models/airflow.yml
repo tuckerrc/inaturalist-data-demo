@@ -2,7 +2,10 @@ version: 2
 
 sources:
   - name: airflow
-    schema: public
+    schema: cq_source
     database: airflow
     tables:
       - name: cq_inaturalist_observations
+    tags:
+      - "source"
+      - "cq"

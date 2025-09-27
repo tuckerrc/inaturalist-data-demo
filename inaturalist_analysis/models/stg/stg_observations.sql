@@ -1,8 +1,15 @@
 with
     source as (select * from {{ source("airflow", "cq_inaturalist_observations") }}),
+    dedupe as (
+        {{
+            dbt_utils.deduplicate(
+                relation="source", partition_by="id", order_by="_cq_sync_time desc"
+            )
+        }}
+    ),
     renamed as (
         select
-            source.id as observation_id,
+            dedupe.id as observation_id,
             quality_grade as quality_grade,
             uuid as uuid,
             time_observed_at as time_observed_at,
@@ -17,7 +24,7 @@ with
             place_guess as place_guess,
             identifications as identifications,
             taxon_data.id as taxon_id
-        from source, jsonb_to_record(taxon) as taxon_data(id int)
+        from dedupe, jsonb_to_record(taxon) as taxon_data(id int)
     )
 
 select *

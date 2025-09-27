@@ -1,24 +1,34 @@
 kind: source
 spec:
-  name: "observations"
+  name: "observations-inaturalist"
   registry: "grpc"
   path: "localhost:7777"
   tables: ['*']
   destinations: ["postgresql"]
   spec:
     base_url: https://api.inaturalist.org
-    family_id: 7823 # Crows, Jays, and Magpies
-    # family_id: 45933 # Squirrels
-    bbox: # North Carolina
-      swlat: 35.530836
-      swlng: -79.071087
-      nelat: 36.117908
-      nelng: -78.247617
-    # bbox: # Central Park
-    #   swlat: 40.765518
-    #   swlng: -73.982994
-    #   nelat: 40.800003
-    #   nelng: -73.947213
+    # family_id: 7823 # Crows, Jays, and Magpies
+    # family_id: 42044 # Wolves and Dogs
+    # family_id: 41636 # Bears
+    # bbox: # North Carolina
+    #   swlat: 35.530836
+    #   swlng: -79.071087
+    #   nelat: 36.117908
+    #   nelng: -78.247617
+    family_id: 45933 # Squirrels
+    # family_id: 20059 # Flaco
+    bbox: # Central Park
+      swlat: 40.765518
+      swlng: -73.982994
+      nelat: 40.800003
+      nelng: -73.947213
+    # family_id: 870764 # Beavers, Pocket Gophers, and Allies
+    # bbox: # Yellowstone National Park
+    #   swlat: 43.863109
+    #   swlng: -111.102189
+    #   nelat: 45.259921
+    #   nelng: -109.183959
+        
 ---
 kind: destination
 spec:
